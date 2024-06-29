@@ -7,9 +7,7 @@ import authRoutes from "./routes/auth";
 import cookieParser from "cookie-parser";
 import path from "path";
 
-mongoose.connect(
-  "mongodb+srv://anushkasingh202525:8f8yEET5Zap0zNyQ@e2e-db-test.ty2kn5c.mongodb.net/?retryWrites=true&w=majority&appName=e2e-db-test/users"
-);
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string);
 
 const app = express();
 app.use(cookieParser());
