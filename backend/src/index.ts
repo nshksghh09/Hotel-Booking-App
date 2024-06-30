@@ -9,7 +9,6 @@ import path from "path";
 require("dotenv").config();
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string);
-console.log(process.env.FRONTEND_URL);
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
