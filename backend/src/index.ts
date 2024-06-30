@@ -8,9 +8,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 require("dotenv").config();
 
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string).then(() => {
-  console.log(process.env.MONGODB_CONNECTION_STRING);
-});
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string);
 
 const app = express();
 app.use(cookieParser());
