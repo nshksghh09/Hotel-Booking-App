@@ -6,26 +6,30 @@ import userRoutes from "./routes/users";
 import authRoutes from "./routes/auth";
 import cookieParser from "cookie-parser";
 import path from "path";
+require("dotenv").config();
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string);
-
+console.log(process.env.FRONTEND_URL);
 const app = express();
 app.use(cookieParser());
-app.use(express.json()); //body of API req is converted to json so that we don't have to convert it
-app.use(express.urlencoded({ extended: true })); //helps to parse URLs
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
-); //it is for security purpose that prevents some URLs from reaching our server
+);
 
-//this will go to the compiled frontend dist folder which has our compiled static frontend assets
-//and server those static assets on the route of url that the backend runs on
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
-app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+
+app.get("*", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+});
+
 app.listen(7000, () => {
-  console.log("the server is running on port 7000");
+  console.log("server running on localhost:7000");
 });

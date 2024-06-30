@@ -1,6 +1,7 @@
+//this helps on the frontend to ensure that all the properties are entered and will give us an error when any of these properties is missing
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
-//this helps on the frontend to ensure that all the properties are entered and will give us an error when any of these properties is missing
+
 export type UserType = {
   _id: string;
   email: string;
