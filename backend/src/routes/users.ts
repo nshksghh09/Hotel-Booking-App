@@ -32,11 +32,14 @@ router.post(
     }),
   ],
   async (req: Request, res: Response) => {
+    console.log("data received");
     const errors = validationResult(req);
+    console.log(errors);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ message: errors.array() });
+      return res.status(400).json({ message: errors.array()[0].msg });
     }
-
+    console.log(req.body);
+    console.log("hello");
     try {
       let user = await User.findOne({
         email: req.body.email,

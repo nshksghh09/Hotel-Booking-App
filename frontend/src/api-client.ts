@@ -11,7 +11,7 @@ export const register = async (formData: RegisterFormData) => {
     },
     body: JSON.stringify(formData),
   });
-
+  console.log("data sent");
   const responseBody = await response.json();
 
   if (!response.ok) {
