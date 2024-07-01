@@ -13,7 +13,6 @@ export const register = async (formData: RegisterFormData) => {
   });
   console.log("data sent");
   const responseBody = await response.json();
-
   if (!response.ok) {
     throw new Error(responseBody.message);
   }

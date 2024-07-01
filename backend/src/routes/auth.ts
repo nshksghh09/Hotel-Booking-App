@@ -26,7 +26,7 @@ router.post(
     try {
       const user = await User.findOne({ email });
       if (!user) {
-        return res.status(400).json({ message: "Invalid Credentials" });
+        return res.status(400).json({ message: "USER DOES NOT EXISTS" });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
