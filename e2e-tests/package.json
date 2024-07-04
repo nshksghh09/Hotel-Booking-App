@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "e2e": "playwright test",
+  "scripts": {
+    "start": "node index.js",
+    "test": "playwright test",
+    "e2e": "playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.45.0",
-    "@types/node": "^20.14.9"
+    "@types/node": "^20.14.9",
+    "typescript": "^5.5.3"
   }
 }
