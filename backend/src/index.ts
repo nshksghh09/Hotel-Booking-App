@@ -27,7 +27,6 @@ const corsOptions = {
     "https://hotel-booking-app-0w0f.onrender.com", // Deployed frontend URL
   ],
   methods: "GET,POST,PUT,DELETE,OPTIONS",
-  allowedHeaders: "Content-Type, Authorization",
   credentials: true, // Allow cookies
 };
 

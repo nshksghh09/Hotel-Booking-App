@@ -15,11 +15,14 @@ export const register = async (formData: RegisterFormData) => {
   console.log("data sent");
   const responseBody = await response.json();
   if (!response.ok) {
+    console.log("registered");
     throw new Error(responseBody.message);
   }
+  return responseBody;
 };
 
 export const signIn = async (formData: SignInFormData) => {
+  console.log(formData);
   const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
     method: "POST",
     credentials: "include",
