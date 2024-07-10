@@ -21,15 +21,17 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://hotel-booking-app-0w0f.onrender.com",
-    ],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: [
+    "http://localhost:5173", // Local development
+    "https://hotel-booking-app-0w0f.onrender.com", // Deployed frontend URL
+  ],
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  allowedHeaders: "Content-Type, Authorization",
+  credentials: true, // Allow cookies
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
