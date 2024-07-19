@@ -12,7 +12,7 @@ const MyHotels = () => {
     }
   );
   if (!hotelData) {
-    return <span>Not Hotels found</span>;
+    return <span>No Hotels found</span>;
   }
   return (
     <div className="space-y-5">
